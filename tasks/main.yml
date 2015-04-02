@@ -1,0 +1,23 @@
+---
+- name: apt-get update
+  apt: update-cache=yes
+  
+- name: Install dependencies
+  apt: pkg={{ item }}
+       state=installed
+  with_items: packages
+
+- name: Start Apache and ensure autostart
+  service: name=apache2
+           state=started
+           enabled=true
+
+- name: Enable Apache modules
+  apache2_module: name={{ item }}
+                  state=present
+  with_items: enabled_modules
+
+- name: Disable Apache modules
+  apache2_module: name={{ item }}
+                  state=absent
+  with_items: disabled_modules

@@ -1,0 +1,22 @@
+---
+packages:
+ - apache2
+ - apache2-mpm-worker
+ - libapache2-mod-wsgi
+ - libapache2-mod-evasive
+ - libapache2-mod-proxy-html
+
+enabled_modules:
+ - alias
+ - deflate
+ - expires
+ - headers
+ - mime
+ - wsgi
+ - ssl 
+ - rewrite
+ - mod-evasive
+ - proxy_http
+
+disabled_modules:
+ - dir 
